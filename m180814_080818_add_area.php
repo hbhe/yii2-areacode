@@ -28,7 +28,7 @@ class m180814_080818_add_area extends Migration
         $this->createIndex('parent_id', '{{%area_code}}', ['parent_id']);
 
         $sql = <<<EOD
-        INSERT INTO `cc_area_code` (`id`, `type`, `name`, `parent_id`, `zip`) VALUES
+        INSERT INTO {{%area_code}} (`id`, `type`, `name`, `parent_id`, `zip`) VALUES
         ('1', 1, '中国', '0', ''),
         ('110000', 2, '北京', '1', ''),
         ('110100', 3, '北京市', '110000', '100000'),
@@ -1111,7 +1111,7 @@ class m180814_080818_add_area extends Migration
         ('330284', 4, '其它区', '330200', ''),
         ('330300', 3, '温州市', '330000', '325000'),
         ('330302', 4, '鹿城区', '330300', '325000');
-        INSERT INTO `cc_area_code` (`id`, `type`, `name`, `parent_id`, `zip`) VALUES
+        INSERT INTO {{%area_code}} (`id`, `type`, `name`, `parent_id`, `zip`) VALUES
         ('330303', 4, '龙湾区', '330300', '325024'),
         ('330304', 4, '瓯海区', '330300', '325005'),
         ('330322', 4, '洞头县', '330300', '325700'),
@@ -2210,7 +2210,7 @@ class m180814_080818_add_area extends Migration
         ('431282', 4, '其它区', '431200', ''),
         ('431300', 3, '娄底市', '430000', '417000'),
         ('431302', 4, '娄星区', '431300', '417000');
-        INSERT INTO `cc_area_code` (`id`, `type`, `name`, `parent_id`, `zip`) VALUES
+        INSERT INTO {{%area_code}} (`id`, `type`, `name`, `parent_id`, `zip`) VALUES
         ('431321', 4, '双峰县', '431300', '417700'),
         ('431322', 4, '新化县', '431300', '417600'),
         ('431381', 4, '冷水江市', '431300', '417500'),
@@ -3283,7 +3283,7 @@ class m180814_080818_add_area extends Migration
         ('610800', 3, '榆林市', '610000', '719000'),
         ('610802', 4, '榆阳区', '610800', '719000'),
         ('610821', 4, '神木县', '610800', '719300');
-        INSERT INTO `cc_area_code` (`id`, `type`, `name`, `parent_id`, `zip`) VALUES
+        INSERT INTO {{%area_code}} (`id`, `type`, `name`, `parent_id`, `zip`) VALUES
         ('610822', 4, '府谷县', '610800', '719400'),
         ('610823', 4, '横山县', '610800', '719100'),
         ('610824', 4, '靖边县', '610800', '718500'),
@@ -3757,18 +3757,18 @@ class m180814_080818_add_area extends Migration
         ('820200', 3, '离岛', '820000', '');
 EOD;
         Yii::$app->db->createCommand($sql)->execute();
-        Yii::$app->db->createCommand("UPDATE cc_area_code set name = '内蒙古' where name = '内蒙古自治区';")->execute();
-        Yii::$app->db->createCommand("UPDATE cc_area_code set name = '广西' where name = '广西壮族自治区';")->execute();
-        Yii::$app->db->createCommand("UPDATE cc_area_code set name = '宁夏' where name = '宁夏回族自治区';")->execute();
-        Yii::$app->db->createCommand("UPDATE cc_area_code set name = '西藏' where name = '西藏自治区';")->execute();
-        Yii::$app->db->createCommand("UPDATE cc_area_code set name = '新疆' where name = '新疆维吾尔自治区';")->execute();
-        Yii::$app->db->createCommand("UPDATE cc_area_code set name = '香港' where name = '香港特别行政区';")->execute();
-        Yii::$app->db->createCommand("UPDATE cc_area_code set name = '澳门' where name = '澳门特别行政区';")->execute();
-        Yii::$app->db->createCommand("UPDATE cc_area_code set name = REPLACE(name, '省', '') where type = 2;")->execute();
-        Yii::$app->db->createCommand("UPDATE cc_area_code set name = TRIM(TRAILING '市' FROM name) where LENGTH(name) > 6 and SUBSTRING(name, -1) = '市';")->execute();
-        Yii::$app->db->createCommand("UPDATE cc_area_code set name = TRIM(TRAILING '自治县' FROM name) where LENGTH(name) > 6 and SUBSTRING(name, -3) = '自治县';")->execute();
-        Yii::$app->db->createCommand("UPDATE cc_area_code set name = TRIM(TRAILING '自治州' FROM name) where LENGTH(name) > 6 and SUBSTRING(name, -3) = '自治州';")->execute();
-        Yii::$app->db->createCommand("UPDATE cc_area_code set name = TRIM(TRAILING '自治区' FROM name) where LENGTH(name) > 6 and SUBSTRING(name, -3) = '自治区';")->execute();
+        Yii::$app->db->createCommand("UPDATE {{%area_code}} set name = '内蒙古' where name = '内蒙古自治区';")->execute();
+        Yii::$app->db->createCommand("UPDATE {{%area_code}} set name = '广西' where name = '广西壮族自治区';")->execute();
+        Yii::$app->db->createCommand("UPDATE {{%area_code}} set name = '宁夏' where name = '宁夏回族自治区';")->execute();
+        Yii::$app->db->createCommand("UPDATE {{%area_code}} set name = '西藏' where name = '西藏自治区';")->execute();
+        Yii::$app->db->createCommand("UPDATE {{%area_code}} set name = '新疆' where name = '新疆维吾尔自治区';")->execute();
+        Yii::$app->db->createCommand("UPDATE {{%area_code}} set name = '香港' where name = '香港特别行政区';")->execute();
+        Yii::$app->db->createCommand("UPDATE {{%area_code}} set name = '澳门' where name = '澳门特别行政区';")->execute();
+        Yii::$app->db->createCommand("UPDATE {{%area_code}} set name = REPLACE(name, '省', '') where type = 2;")->execute();
+        Yii::$app->db->createCommand("UPDATE {{%area_code}} set name = TRIM(TRAILING '市' FROM name) where LENGTH(name) > 6 and SUBSTRING(name, -1) = '市';")->execute();
+        Yii::$app->db->createCommand("UPDATE {{%area_code}} set name = TRIM(TRAILING '自治县' FROM name) where LENGTH(name) > 6 and SUBSTRING(name, -3) = '自治县';")->execute();
+        Yii::$app->db->createCommand("UPDATE {{%area_code}} set name = TRIM(TRAILING '自治州' FROM name) where LENGTH(name) > 6 and SUBSTRING(name, -3) = '自治州';")->execute();
+        Yii::$app->db->createCommand("UPDATE {{%area_code}} set name = TRIM(TRAILING '自治区' FROM name) where LENGTH(name) > 6 and SUBSTRING(name, -3) = '自治区';")->execute();
 
         return true;
     }
